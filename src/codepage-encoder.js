@@ -408,12 +408,12 @@ class CodepageEncoder {
   /**
      * Encode a string in the specified codepage
      *
-     * @param  {string}   codepage  The codepage
      * @param  {string}   input     Text that needs encoded to the specified codepage
+     * @param  {string}   codepage  The codepage
      * @return {Uint8Array}         Return an array of bytes with the encoded string
      *
      */
-  static encode(codepage, input) {
+  static encode(input, codepage) {
     const output = new Uint8Array(input.length);
 
     let chars = '\u0000'.repeat(128);
@@ -444,6 +444,81 @@ class CodepageEncoder {
     }
 
     return output;
+  }
+
+
+  /**
+     * Encode a string in the most optimal set of codepages.
+     *
+     * @param  {string}   input         Text that needs encoded
+     * @param  {array}    candidates    An array of candidate codepages that are allowed to be used, ranked by importance
+     * @return {Uint8Array}             Return an array of bytes with the encoded string
+     *
+     */
+  static autoEncode(input, candidates) {
+    const fragments = [];
+    let fragment = -1;
+    let current;
+
+    for (let c = 0; c < input.length; c++) {
+      const codepoint = input.codePointAt(c);
+
+      let available;
+      let char = 0;
+
+      if (codepoint < 128) {
+        available = current || candidates[0];
+        char = codepoint;
+      }
+
+      if (!available && current) {
+        const position = definitions[current].chars.indexOf(input[c]);
+
+        if (position !== -1) {
+          available = current;
+          char = definitions[current].offset + position;
+        }
+      }
+
+      if (!available) {
+        for (let i = 0; i < candidates.length; i++) {
+          const position = definitions[candidates[i]].chars.indexOf(input[c]);
+
+          if (position !== -1) {
+            available = candidates[i];
+            char = definitions[candidates[i]].offset + position;
+            break;
+          }
+        }
+      }
+
+      if (!available) {
+        available = current || candidates[0];
+        char = 0x3f;
+      }
+
+      if (current != available) {
+        if (current) {
+          fragments[fragment].bytes = new Uint8Array(fragments[fragment].bytes);
+        }
+
+        fragment++;
+        fragments[fragment] = {
+          codepage: available,
+          bytes: [],
+        };
+
+        current = available;
+      }
+
+      fragments[fragment].bytes.push(char);
+    }
+
+    if (current) {
+      fragments[fragment].bytes = new Uint8Array(fragments[fragment].bytes);
+    }
+
+    return fragments;
   }
 }
 

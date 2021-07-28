@@ -11,7 +11,7 @@ First, install the package using npm:
 Then, require the package and use it like so:
 
     let CodepageEncoder = require('codepage-encoder');
-    CodepageEncoder.encode('cp869', 'ξεσκεπάζω την ψυχοφθόρα βδελυγμία');
+    CodepageEncoder.encode('ξεσκεπάζω την ψυχοφθόρα βδελυγμία', 'cp869');
 
 
 ## Methods
@@ -23,7 +23,7 @@ The following static methods are available for you to use. You don't need to ins
 
 Encode the string to the codepage you specified. The result will be a Uint8Array containing all the bytes of the string in your codepage.
 
-    CodepageEncoder.encode('cp869', 'ξεσκεπάζω την ψυχοφθόρα βδελυγμία');
+    CodepageEncoder.encode('ξεσκεπάζω την ψυχοφθόρα βδελυγμία', 'cp869');
 
 Result: 
 
@@ -33,6 +33,56 @@ Result:
         246, 242, 244, 233, 243, 226, 162,
         235, 214,  32, 215, 221, 222, 229,
         242, 216, 230, 159, 214
+    ]
+
+See the method `CodepageEncoder.getEncodings()` for determining which codepages are currently supported by this library.
+
+
+### CodepageEncoder.autoEncode
+
+Encode the string with the most optimal set of codepages from the candidates codepages that you specified. The result will be a array of text fragments with the name of the codepage and an Uint8Array containing all the bytes of the string in that codepage.
+
+    CodepageEncoder.autoEncode('Qwerty ψυχοφθόρα på Съешь łódź', [
+        'cp437', 'cp858', 'cp860', 'cp861', 'cp863', 'cp865', 'cp852', 'cp857', 'cp855', 'cp866', 'cp869'
+    ]);
+
+Result: 
+
+    [
+        {
+            codepage: 'cp437',
+            bytes: Uint8Array(7) [
+                81, 119, 101,
+                114, 116, 121,
+                32
+            ]
+        },
+        {
+            codepage: 'cp869',
+            bytes: Uint8Array(11) [
+                246, 242, 244, 233,
+                243, 226, 162, 235,
+                214,  32, 112
+            ]
+        },
+        { 
+            codepage: 'cp437', 
+            bytes: Uint8Array(2) [ 
+                134, 32 
+            ] 
+        },
+        {
+            codepage: 'cp855',
+            bytes: Uint8Array(6) [ 
+                228, 158, 168, 245, 237, 32 
+            ]
+        },
+        { 
+            codepage: 'cp852', 
+            bytes: Uint8Array(4) [ 
+                136, 162, 100, 171 
+            ] 
+        }
     ]
 
 See the method `CodepageEncoder.getEncodings()` for determining which codepages are currently supported by this library.
