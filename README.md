@@ -13,6 +13,11 @@ Then, require the package and use it like so:
     let CodepageEncoder = require('codepage-encoder');
     CodepageEncoder.encode('ξεσκεπάζω την ψυχοφθόρα βδελυγμία', 'cp869');
 
+Or import it as an ES module:
+
+    import CodepageEncoder from 'codepage-encoder';
+    CodepageEncoder.encode('ξεσκεπάζω την ψυχοφθόρα βδελυγμία', 'cp869');
+    
 
 ## Methods
 

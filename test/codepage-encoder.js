@@ -1,7 +1,7 @@
-const CodepageEncoder = require ('../src/codepage-encoder');
-const iconv = require('iconv-lite');
+import CodepageEncoder from '../src/codepage-encoder.js';
+import iconv from 'iconv-lite';
+import chai from 'chai';
 
-const chai = require('chai');  
 const assert = chai.assert;
 const expect = chai.expect;
 const should = chai.should();

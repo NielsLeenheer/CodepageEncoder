@@ -1,14 +1,14 @@
 {
   "name": "codepage-encoder",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A library for converting Unicode to obscure single byte codepage for use with thermal printers.",
-  "main": "dist/codepage-encoder.cjs.js",
-  "module": "dist/codepage-encoder.esm.js",
-  "browser": "dist/codepage-encoder.umd.js",
+  "exports": {
+    "import": "./dist/codepage-encoder.esm.js",
+    "require": "./dist/codepage-encoder.cjs.js"
+  },
+  "type": "module",
   "scripts": {
-    "bundle": "rollup -c",
-    "uglify": "uglifyjs dist/codepage-encoder.umd.js -cm --overwrite -o dist/codepage-encoder.umd.js",
-    "build": "npm run bundle && npm run uglify",
+    "build": "rollup -c",
     "lint": "eslint --fix src/codepage-encoder.js",
     "mocha": "mocha test/",
     "test": "npm run lint && npm run mocha"
@@ -30,15 +30,13 @@
   },
   "homepage": "https://github.com/NielsLeenheer/CodepageEncoder#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.1",
-    "@rollup/plugin-node-resolve": "^7.0.0",
-    "rollup": "^1.29.0",
     "buffer-to-uint8array": "^1.1.0",
     "chai": "^4.3.7",
     "eslint": "^8.38.0",
     "eslint-config-google": "^0.14.0",
     "iconv-lite": "^0.6.3",
     "mocha": "^10.2.0",
+    "rollup": "^1.29.0",
     "uglify-es": "^3.3.9"
   },
   "files": [
