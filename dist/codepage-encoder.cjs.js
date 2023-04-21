@@ -1,3 +1,5 @@
+'use strict';
+
 const definitions = {
   'cp437': {
     name: 'USA, Standard Europe',
@@ -522,4 +524,4 @@ class CodepageEncoder {
   }
 }
 
-export default CodepageEncoder;
+module.exports = CodepageEncoder;
