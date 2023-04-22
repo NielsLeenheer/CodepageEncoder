@@ -522,4 +522,4 @@ class CodepageEncoder {
   }
 }
 
-export default CodepageEncoder;
+export { CodepageEncoder as default };
