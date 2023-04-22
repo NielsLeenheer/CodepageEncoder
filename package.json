@@ -1,13 +1,15 @@
 {
   "name": "codepage-encoder",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A library for converting Unicode to obscure single byte codepage for use with thermal printers.",
+  "type": "module",
   "exports": {
     "import": "./dist/codepage-encoder.mjs",
     "require": "./dist/codepage-encoder.cjs"
   },
-  "type": "module",
-  "scripts": {
+  "module": "dist/codepage-encoder.mjs",
+  "main": "dist/codepage-encoder.cjs",
+"scripts": {
     "build": "rollup -c",
     "lint": "eslint --fix src/codepage-encoder.js",
     "mocha": "mocha test/",
