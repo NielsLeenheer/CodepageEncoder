@@ -1,4 +1,4 @@
-# codepage-encoder
+# CodepageEncoder
 
 A library for converting Unicode to obscure single byte codepage for use with thermal printers. This library is internally used by `esc-pos-encoder`, `star-prnt-encoder` and `thermal-printer-encoder` and limited in functionality. We recommend that you use another library like `iconv` or `iconv-lite` for use with your project – unless you really, really need the codepages that are supported by this library.
 
