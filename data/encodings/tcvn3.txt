@@ -1,0 +1,71 @@
+# 
+#	Created by Niels Leenheer
+#	Based on ...
+#
+0xa8	0x0103	# Latin Small Letter A with Breve
+0xa9	0x00e2	# Latin Small Letter A with Circumflex
+0xaa	0x00ea	# Latin Small Letter E with Circumflex
+0xab	0x00f4	# Latin Small Letter O with Circumflex
+0xac	0x01a1	# Latin Small Letter O with Horn
+0xad	0x01b0	# Latin Small Letter U with Horn
+0xae	0x0111	# Latin Small Letter D with Stroke
+0xb5	0x00e0	# Latin Small Letter A with Grave
+0xb6	0x1ea3	# Latin Small Letter A with Hook Above
+0xb7	0x00e3	# Latin Small Letter A with Tilde
+0xb8	0x00e1	# Latin Small Letter A with Acute
+0xb9	0x1ea1	# Latin Small Letter A with Dot Below
+0xbb	0x1eb1	# Latin Small Letter A with Breve and Grave
+0xbc	0x1eb3	# Latin Small Letter A with Breve and Hook Above
+0xbd	0x1eb5	# Latin Small Letter A with Breve and Tilde
+0xbe	0x1eaf	# Latin Small Letter A with Breve and Acute
+0xc6	0x1eb7	# Latin Small Letter A with Breve and Dot Below
+0xc7	0x1ea7	# Latin Small Letter A with Circumflex and Grave
+0xc8	0x1ea9	# Latin Small Letter A with Circumflex and Hook Above
+0xc9	0x1eab	# Latin Small Letter A with Circumflex and Tilde
+0xca	0x1ea5	# Latin Small Letter A with Circumflex and Acute
+0xcb	0x1ead	# Latin Small Letter A with Circumflex and Dot Below
+0xcc	0x00e8	# Latin Small Letter E with Grave
+0xce	0x1ebb	# Latin Small Letter E with Hook Above
+0xcf	0x1ebd	# Latin Small Letter E with Tilde
+0xd0	0x00e9	# Latin Small Letter E with Acute
+0xd1	0x1eb9	# Latin Small Letter E with Dot Below
+0xd2	0x1ec1	# Latin Small Letter E with Circumflex and Grave
+0xd3	0x1ec3	# Latin Small Letter E with Circumflex and Hook Above
+0xd4	0x1ec5	# Latin Small Letter E with Circumflex and Tilde
+0xd5	0x1ebf	# Latin Small Letter E with Circumflex and Acute
+0xd6	0x1ec7	# Latin Small Letter E with Circumflex and Dot Below
+0xd7	0x00ec	# Latin Small Letter I with Grave
+0xd8	0x1ec9	# Latin Small Letter I with Hook Above
+0xdc	0x0129	# Latin Small Letter I with Tilde
+0xdd	0x00ed	# Latin Small Letter I with Acute
+0xde	0x1ecb	# Latin Small Letter I with Dot Below
+0xdf	0x00f2	# Latin Small Letter O with Grave
+0xe1	0x1ecf	# Latin Small Letter O with Hook Above
+0xe2	0x00f5	# Latin Small Letter O with Tilde
+0xe3	0x00f3	# Latin Small Letter O with Acute
+0xe4	0x1ecd	# Latin Small Letter O with Dot Below
+0xe5	0x1ed3	# Latin Small Letter O with Circumflex and Grave
+0xe6	0x1ed5	# Latin Small Letter O with Circumflex and Hook Above
+0xe7	0x1ed7	# Latin Small Letter O with Circumflex and Tilde
+0xe8	0x1ed1	# Latin Small Letter O with Circumflex and Acute
+0xe9	0x1ed9	# Latin Small Letter O with Circumflex and Dot Below
+0xea	0x1edd	# Latin Small Letter O with Horn and Grave
+0xeb	0x1edf	# Latin Small Letter O with Horn and Hook Above
+0xec	0x1ee1	# Latin Small Letter O with Horn and Tilde
+0xed	0x1edb	# Latin Small Letter O with Horn and Acute
+0xee	0x1ee3	# Latin Small Letter O with Horn and Dot Below
+0xef	0x00f9	# Latin Small Letter U with Grave
+0xf1	0x1ee7	# Latin Small Letter U with Hook Above
+0xf2	0x0169	# Latin Small Letter U with Tilde
+0xf3	0x00fa	# Latin Small Letter U with Acute
+0xf4	0x1ee5	# Latin Small Letter U with Dot Below
+0xf5	0x1eeb	# Latin Small Letter U with Horn and Grave
+0xf6	0x1eed	# Latin Small Letter U with Horn and Hook Above
+0xf7	0x1eef	# Latin Small Letter U with Horn and Tilde
+0xf8	0x1ee9	# Latin Small Letter U with Horn and Acute
+0xf9	0x1ef1	# Latin Small Letter U with Horn and Dot Below
+0xfa	0x1ef3	# Latin Small Letter Y with Grave
+0xfb	0x1ef7	# Latin Small Letter Y with Hook Above
+0xfc	0x1ef9	# Latin Small Letter Y with Tilde
+0xfd	0x00fd	# Latin Small Letter Y with Acute
+0xfe	0x1ef5	# Latin Small Letter Y with Dot Below

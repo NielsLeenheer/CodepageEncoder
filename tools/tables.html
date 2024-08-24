@@ -1,0 +1,180 @@
+<meta charset="UTF-8">
+
+<script src="../dist/codepage-encoder.umd.js"></script>
+
+<style>
+
+    body {
+        font-family: sans-serif;
+    }
+
+    h2, h2 + p {
+        margin-bottom: 0;
+    }
+
+    h2 small {
+        font-size: 0.65em;
+        font-weight: normal;
+    }
+
+    div {
+        margin: 0 auto;
+        width: fit-content;
+    }
+    table {
+        border-collapse: collapse;
+        width: 935px;
+        margin-bottom: 60px;
+    }
+
+    td, th {
+        border: 1px solid #ccc;
+        width: 55px;
+        height: 55px;
+    }
+
+    th {
+        color: #666;
+        border: none;
+    }
+ 
+    td.defined {
+        background-color: #fff8e2;
+    }
+
+    td:not(.hasCharacter) {
+        background-color: #f3f3f3;
+        color: #888;
+    }
+
+    td.defined:not(.hasCharacter) {
+        background-color: #edebe5;
+        color: #888;
+    }
+
+    td div.character {
+        font-size: 1.6em;
+        line-height: 1em;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+        text-align: center;
+        font-family: monospace;
+    }
+
+    td div.codepoint {
+        font-size: 0.8em;
+        text-align: center;
+        font-family: monospace;
+        color: #888;
+    }
+
+</style>
+
+<main id="tables"></main>
+
+<script>
+
+    let encodings = CodepageEncoder.getEncodings();
+    let tables = document.getElementById('tables');
+
+    for(let encoding of encodings) {
+        let definition = CodepageEncoder.getEncoding(encoding);
+        let codepoints = CodepageEncoder.getCodepoints(encoding);
+        let defined = codepoints.map((v, i) => i).filter(i => typeof i === 'number')
+        
+        let min = Math.min(...defined) < 128 ? 0 : 8;
+        let max = Math.max(...defined) >= 128 ? 16 : 8;
+
+        let content = '';
+
+        content += `<div>`;
+        content += `<h2>${encoding} ${definition.extends ? ` <small>(based on ${definition.extends})</small>` : ''}</h2>`;
+        content += `<p>${definition.name}</p>`;
+        content += `<table>`;
+        content += `<tr>`;
+        content += `<th></th>`;
+
+        for (let b = 0; b < 16; b++) {
+            content += `<th>_${b.toString(16).toUpperCase()}</th>`;
+        }
+
+        content += `</tr>`;
+
+        for (let a = min; a < max; a++) {
+            content += `<tr>`;
+            content += `<th>${a.toString(16).toUpperCase()}_</th>`;
+
+            for (let b = 0; b < 16; b++) {
+                
+                let code = (a * 16) + b;
+                let codepoint = definition.codepoints[code] || 0;
+                let char = '';
+                let value = true;
+
+                if (codepoint) {
+                    hex = codepoint.toString(16).padStart(4, '0');
+                    char = String.fromCodePoint(codepoint);
+                }
+
+                if (codepoint >= 0x00 && codepoint <= 0x1f) {
+                    hex = codepoint.toString(16).padStart(4, '0');;
+                    char = String.fromCodePoint(codepoint + 0x2400);
+                    value = false;
+                }
+
+                if (codepoint == 0x20) {
+                    hex = codepoint.toString(16).padStart(4, '0');;
+                    char = String.fromCodePoint(0x2420);
+                }
+
+                if (codepoint == 0x7f) {
+                    hex = codepoint.toString(16).padStart(4, '0');;
+                    char = String.fromCodePoint(0x2421);
+                    value = false;
+                }
+
+                if (codepoint >= 0x80 && codepoint <= 0x9f) {
+                    hex = '';
+                    char = '';
+                    value = false;
+                }
+
+                if (codepoint == 0xfffd) {
+                    hex = '';
+                    char = '';
+                    value = false;
+                }
+                
+                let classes = [];
+
+                if (value) {
+                    classes.push('hasCharacter');
+                }
+                
+                if (defined.includes(code)) {
+                    classes.push('defined');
+                }
+
+                content += `<td${classes ? ` class="${classes.join(' ')}"` : ""}>`;
+
+                if (hex) {
+                    content += `<div class='character'>${char}</div>`;
+                    content += `<div class='codepoint'>${hex}</div>`;
+                }
+
+                content += `</td>`;
+            }
+
+            content += `</tr>`;
+        }
+
+        content += `</table>`;
+        content += `</div>`;
+        
+        let div = document.createElement('div');
+        div.innerHTML = content;
+        tables.appendChild(div);
+
+    }
+
+</script>

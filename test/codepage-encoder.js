@@ -16,11 +16,11 @@ describe('CodepageEncoder', function() {
 
             tests.forEach(test => {
                 describe(`(${encoding}) ${test.string}`, function () {
-                    let expected = iconv.encode(test.string, encoding);
-                    let actual = CodepageEncoder.encode(test.string, encoding);
+                    let expected = Array.from(iconv.encode(test.string, encoding));
+                    let actual = Array.from(CodepageEncoder.encode(test.string, encoding));
                     
                     it('should equal to iconv encoding', function () {
-                        assert.deepEqual(expected, actual);
+                        assert.deepEqual(actual, expected);
                     });
                 });
             });
