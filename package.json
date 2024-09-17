@@ -1,5 +1,5 @@
 {
-  "name": "codepage-encoder",
+  "name": "@point-of-sale/codepage-encoder",
   "version": "3.0.0",
   "description": "A library for converting Unicode to obscure single byte codepage for use with thermal printers.",
   "type": "module",
