@@ -1,21 +1,21 @@
 # CodepageEncoder
 
-A library for converting Unicode to obscure single byte codepage for use with thermal printers. This library is internally used by `esc-pos-encoder`, `star-prnt-encoder` and `thermal-printer-encoder` and limited in functionality. We recommend that you use another library like `iconv` or `iconv-lite` for use with your project – unless you really, really need the codepages that are supported by this library.
+A library for converting Unicode to obscure single byte codepage for use with thermal printers. This library is internally used by `esc-pos-encoder`, `star-prnt-encoder` and `receipt-printer-encoder` and limited in functionality. We recommend that you use another library like `iconv` or `iconv-lite` for use with your project – unless you really, really need the codepages that are supported by this library.
 
 ## Usage
 
 First, install the package using npm:
 
-    npm install codepage-encoder --save
+    npm install @point-of-sale/codepage-encoder --save
 
 Then, require the package and use it like so:
 
-    let CodepageEncoder = require('codepage-encoder');
+    let CodepageEncoder = require('@point-of-sale/codepage-encoder');
     CodepageEncoder.encode('ξεσκεπάζω την ψυχοφθόρα βδελυγμία', 'cp869');
 
 Or import it as an ES module:
 
-    import CodepageEncoder from 'codepage-encoder';
+    import CodepageEncoder from '@point-of-sale/codepage-encoder';
     CodepageEncoder.encode('ξεσκεπάζω την ψυχοφθόρα βδελυγμία', 'cp869');
     
 
