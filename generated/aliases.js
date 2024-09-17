@@ -7,6 +7,9 @@ const aliases = {
 	'iso88592': 'iso8859-2',
 	'iso88597': 'iso8859-7',
 	'iso885915': 'iso8859-15',
+	'shiftjis': 'epson/katakana',
+	'katakana': 'epson/katakana',
+	'cp928': 'star/cp928',
 };
 
 export default aliases;

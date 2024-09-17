@@ -298,12 +298,12 @@ const encodings = {
     'thai11': {
       name: 'Thai (Charcter Code 11)',
       languages: ['th'],
-      extends: 'cp874',
+      extends: 'thai13',
     },
     'thai13': {
       name: 'Thai (Charcter Code 13)',
       languages: ['th'],
-      extends: 'thai11',
+      extends: 'cp874',
     },
     'thai14': {
       name: 'Thai (Charcter Code 14)',
@@ -360,6 +360,7 @@ const encodings = {
       name: 'Katakana',
       languages: ['ja'],
       extends: 'cp437',
+      aliases: ['shiftjis','katakana'],
     },
   
     'epson/iso8859-2': {
@@ -392,6 +393,7 @@ const encodings = {
       name: 'Greek',
       languages: ['el'],
       extends: 'cp437',
+      aliases: ['cp928'],
     },
   
     /* Bixolon codepages */
