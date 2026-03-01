@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": ".",
+    "outDir": "dist/tmp",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "strict": false,
+    "skipLibCheck": true
+  },
+  "include": ["src/codepage-encoder.js", "generated/codepage.ts"]
+}

@@ -190,5 +190,30 @@ function generateAliases() {
 
 
 
+function generateTypes() {
+    let codepages = [];
+
+    for (let codepage in encodings) {
+        codepages.push(codepage);
+
+        let encoding = encodings[codepage];
+        if (encoding.aliases) {
+            for (let alias of encoding.aliases) {
+                codepages.push(alias);
+            }
+        }
+    }
+
+    let output = '';
+
+    output += 'export type Codepage =\n';
+    output += codepages.map(c => `\t| '${c}'`).join('\n');
+    output += ';\n';
+
+    fs.writeFileSync('generated/codepage.ts', output, 'utf8');
+}
+
+
 generateDefinitions();
 generateAliases();
+generateTypes();
