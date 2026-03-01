@@ -206,42 +206,11 @@ function generateTypes() {
 
     let output = '';
 
-    output += 'type Codepage =\n';
+    output += 'export type Codepage =\n';
     output += codepages.map(c => `\t| '${c}'`).join('\n');
-    output += ';\n\n';
+    output += ';\n';
 
-    output += 'interface CodepageEncoding {\n';
-    output += '\tname: string;\n';
-    output += '\tlanguages?: string[];\n';
-    output += '\textends?: string;\n';
-    output += '\toffset?: number;\n';
-    output += '\tcodepoints: number[];\n';
-    output += '}\n\n';
-
-    output += 'interface TestString {\n';
-    output += '\tlanguage: string;\n';
-    output += '\tstring: string;\n';
-    output += '}\n\n';
-
-    output += 'interface AutoEncodeFragment {\n';
-    output += '\tcodepage: Codepage;\n';
-    output += '\tbytes: Uint8Array;\n';
-    output += '}\n\n';
-
-    output += 'declare class CodepageEncoder {\n';
-    output += '\tstatic getEncodings(): Codepage[];\n';
-    output += '\tstatic getEncoding(codepage: Codepage): CodepageEncoding;\n';
-    output += '\tstatic getTestStrings(codepage: Codepage): TestString[];\n';
-    output += '\tstatic supports(codepage: string): boolean;\n';
-    output += '\tstatic encode(input: string, codepage: Codepage): Uint8Array;\n';
-    output += '\tstatic autoEncode(input: string, candidates: Codepage[]): AutoEncodeFragment[];\n';
-    output += '\tstatic getCodepoints(codepage: Codepage, evaluateExtends: boolean): number[];\n';
-    output += '}\n\n';
-
-    output += 'export default CodepageEncoder;\n';
-    output += 'export { Codepage, CodepageEncoding, TestString, AutoEncodeFragment };\n';
-
-    fs.writeFileSync('dist/codepage-encoder.d.ts', output, 'utf8');
+    fs.writeFileSync('src/codepage.ts', output, 'utf8');
 }
 
 
