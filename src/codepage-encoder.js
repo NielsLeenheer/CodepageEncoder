@@ -2,7 +2,7 @@ import definitions from '../generated/definitions.js';
 import aliases from '../generated/aliases.js';
 import strings from './strings.js';
 
-/** @typedef {import('../generated/codepage.js').Codepage} Codepage */
+/** @import { Codepage } from '../generated/codepage.js' */
 
 /**
  * @typedef {Object} CodepageEncoding

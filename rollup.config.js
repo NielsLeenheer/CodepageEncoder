@@ -4,29 +4,18 @@ import terser from '@rollup/plugin-terser';
 import dts from 'rollup-plugin-dts';
 
 /**
- * Clean up rollup-plugin-dts deduplication artifacts.
- * When bundling, dts renames types to avoid collisions (e.g., Codepage becomes Codepage$1)
- * and adds an alias (type Codepage = Codepage$1). This plugin inlines them back.
+ * Add Codepage to the type exports.
+ * The Codepage type is inlined from the generated module by rollup-plugin-dts,
+ * but because it's imported via @import (not @typedef), it isn't re-exported automatically.
  */
-function cleanDts() {
+function exportCodepage() {
 	return {
-		name: 'clean-dts',
+		name: 'export-codepage',
 		renderChunk(code) {
-			const aliases = [];
-			const aliasPattern = /^type (\w+) = \1\$(\d+);$/gm;
-			let match;
-			while ((match = aliasPattern.exec(code)) !== null) {
-				aliases.push({ name: match[1], n: match[2] });
-			}
-
-			for (const { name, n } of aliases) {
-				code = code.replace(new RegExp(`\\b${name}\\$${n}\\b`, 'g'), name);
-			}
-
-			// Remove now-redundant "type X = X;" lines
-			code = code.replace(/^type (\w+) = \1;\s*\n/gm, '');
-
-			return code;
+			return code.replace(
+				'export type { AutoEncodeFragment',
+				'export type { AutoEncodeFragment, Codepage'
+			);
 		}
 	};
 }
@@ -77,6 +66,6 @@ export default [
 			file: 'dist/codepage-encoder.d.ts',
 			format: 'es'
 		},
-		plugins: [dts(), cleanDts()]
+		plugins: [dts(), exportCodepage()]
 	}
 ];

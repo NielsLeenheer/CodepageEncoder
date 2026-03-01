@@ -581,7 +581,7 @@ const strings = {
     th: 'ฉันกินกระจกได้ แต่มันไม่ทำให้ฉันเจ็บ',
 };
 
-/** @typedef {import('../generated/codepage.js').Codepage} Codepage */
+/** @import { Codepage } from '../generated/codepage.js' */
 
 /**
  * @typedef {Object} CodepageEncoding

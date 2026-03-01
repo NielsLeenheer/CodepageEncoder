@@ -9,7 +9,8 @@
     "moduleResolution": "bundler",
     "target": "es2022",
     "strict": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "removeComments": true
   },
   "include": ["src/codepage-encoder.js", "generated/codepage.ts"]
 }
