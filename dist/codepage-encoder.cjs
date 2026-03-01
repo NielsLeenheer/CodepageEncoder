@@ -583,6 +583,29 @@ const strings = {
     th: 'ฉันกินกระจกได้ แต่มันไม่ทำให้ฉันเจ็บ',
 };
 
+/** @typedef {import('../generated/codepage.js').Codepage} Codepage */
+
+/**
+ * @typedef {Object} CodepageEncoding
+ * @property {string} name
+ * @property {string[]} [languages]
+ * @property {string} [extends]
+ * @property {number} [offset]
+ * @property {number[]} codepoints
+ */
+
+/**
+ * @typedef {Object} TestString
+ * @property {string} language
+ * @property {string} string
+ */
+
+/**
+ * @typedef {Object} AutoEncodeFragment
+ * @property {Codepage} codepage
+ * @property {Uint8Array} bytes
+ */
+
 /**
  * A library for converting Unicode to obscure single byte codepage for use with thermal printers
  */
@@ -590,7 +613,7 @@ class CodepageEncoder {
   /**
      * Get list of supported codepages
      *
-     * @return {array}           Return an array with the supported codepages
+     * @return {Codepage[]}           Return an array with the supported codepages
      *
      */
   static getEncodings() {
@@ -600,8 +623,8 @@ class CodepageEncoder {
   /**
      * Get codepage definition
      *
-     * @param  {string}   codepage  The codepage, defaults to ascii when it cannot find the codepage
-     * @return {object}             Return an object with the codepage definition
+     * @param  {Codepage}   codepage  The codepage, defaults to ascii when it cannot find the codepage
+     * @return {CodepageEncoding}             Return an object with the codepage definition
      *
      */
   static getEncoding(codepage) {
@@ -628,8 +651,8 @@ class CodepageEncoder {
   /**
      * Get test strings for the specified codepage
      *
-     * @param  {string}   codepage  The codepage
-     * @return {array}              Return an array with one or more objects
+     * @param  {Codepage}   codepage  The codepage
+     * @return {TestString[]}              Return an array with one or more objects
      *                              containing a property for the language of
      *                              the string and a property for the string itself
      *
@@ -671,7 +694,7 @@ class CodepageEncoder {
      * Encode a string in the specified codepage
      *
      * @param  {string}   input     Text that needs encoded to the specified codepage
-     * @param  {string}   codepage  The codepage
+     * @param  {Codepage}   codepage  The codepage
      * @return {Uint8Array}         Return an array of bytes with the encoded string
      *
      */
@@ -697,8 +720,8 @@ class CodepageEncoder {
      * Encode a string in the most optimal set of codepages.
      *
      * @param  {string}   input         Text that needs encoded
-     * @param  {array}    candidates    An array of candidate codepages that are allowed to be used, ranked by importance
-     * @return {Uint8Array}             Return an array of bytes with the encoded string
+     * @param  {Codepage[]}    candidates    An array of candidate codepages that are allowed to be used, ranked by importance
+     * @return {AutoEncodeFragment[]}             Return an array of fragments with the encoded string
      *
      */
   static autoEncode(input, candidates) {
@@ -767,9 +790,9 @@ class CodepageEncoder {
   /**
      * Get codepoints
      *
-     * @param  {string}   codepage         The codepage
+     * @param  {Codepage}   codepage         The codepage
      * @param  {boolean}  evaluateExtends  Evaluate the extends property
-     * @return {array}                     Return an object array with 256 codepoints for the specified codepage
+     * @return {number[]}                     Return an array with 256 codepoints for the specified codepage
      *
      */
   static getCodepoints(codepage, evaluateExtends) {

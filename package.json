@@ -4,7 +4,7 @@
   "description": "A library for converting Unicode to obscure single byte codepage for use with thermal printers.",
   "type": "module",
   "exports": {
-    "types": "./dist/src/codepage-encoder.d.ts",
+    "types": "./dist/codepage-encoder.d.ts",
     "import": "./dist/codepage-encoder.mjs",
     "require": "./dist/codepage-encoder.cjs",
     "browser": {
@@ -15,7 +15,7 @@
   },
   "module": "dist/codepage-encoder.mjs",
   "main": "dist/codepage-encoder.cjs",
-  "types": "dist/src/codepage-encoder.d.ts",
+  "types": "dist/codepage-encoder.d.ts",
   "scripts": {
     "build": "npm run generate && tsc && rollup -c",
     "generate": "node tools/generate.js",
@@ -50,6 +50,7 @@
     "javascript-stringify": "^2.1.0",
     "mocha": "^10.2.0",
     "rollup": "^3.20.7",
+    "rollup-plugin-dts": "^6.3.0",
     "typescript": "^5.9.3"
   },
   "files": [

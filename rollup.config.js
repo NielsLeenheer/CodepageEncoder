@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
+import dts from 'rollup-plugin-dts';
 
 export default [
     // browser-friendly UMD build
@@ -13,18 +14,18 @@ export default [
 			format: 'umd'
 		},
 		plugins: [
-			resolve(), 
+			resolve(),
 			commonjs(),
-            terser() 
+            terser()
 		]
 	},
 
 	{
 		input: 'src/codepage-encoder.js',
-		output: { 
-			file: 'dist/codepage-encoder.esm.js', 
+		output: {
+			file: 'dist/codepage-encoder.esm.js',
 			sourcemap: true,
-			format: 'es' 
+			format: 'es'
 		},
 		plugins: [
 			resolve(),
@@ -32,12 +33,22 @@ export default [
             terser()
 		]
 	},
-	
+
 	{
 		input: 'src/codepage-encoder.js',
 		output: [
 			{ file: 'dist/codepage-encoder.cjs', format: 'cjs' },
 			{ file: 'dist/codepage-encoder.mjs', format: 'es' }
 		]
+	},
+
+	// Bundle TypeScript declarations
+	{
+		input: '.dts/src/codepage-encoder.d.ts',
+		output: {
+			file: 'dist/codepage-encoder.d.ts',
+			format: 'es'
+		},
+		plugins: [dts()]
 	}
 ];
