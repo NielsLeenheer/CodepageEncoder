@@ -1,4 +1,4 @@
 node_modules
 .DS_Store
-build/tmp
+dist/tmp
 tools/_*

@@ -4,7 +4,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "rootDir": ".",
-    "outDir": "build/tmp",
+    "outDir": "dist/tmp",
     "module": "es2022",
     "moduleResolution": "bundler",
     "target": "es2022",

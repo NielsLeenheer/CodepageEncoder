@@ -44,7 +44,7 @@ export default [
 
 	// Bundle TypeScript declarations
 	{
-		input: 'build/tmp/src/codepage-encoder.d.ts',
+		input: 'dist/tmp/src/codepage-encoder.d.ts',
 		output: {
 			file: 'dist/codepage-encoder.d.ts',
 			format: 'es'
