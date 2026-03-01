@@ -3,6 +3,7 @@
     "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
+    "rootDir": ".",
     "outDir": "dist",
     "module": "es2022",
     "moduleResolution": "bundler",
@@ -10,5 +11,5 @@
     "strict": false,
     "skipLibCheck": true
   },
-  "include": ["src/codepage-encoder.js", "src/codepage.ts"]
+  "include": ["src/codepage-encoder.js", "generated/codepage.ts"]
 }

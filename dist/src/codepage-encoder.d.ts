@@ -1,5 +1,5 @@
 export default CodepageEncoder;
-export type Codepage = import("./codepage.js").Codepage;
+export type Codepage = import("../generated/codepage.js").Codepage;
 export type CodepageEncoding = {
     name: string;
     languages?: string[];
@@ -15,7 +15,7 @@ export type AutoEncodeFragment = {
     codepage: Codepage;
     bytes: Uint8Array;
 };
-/** @typedef {import('./codepage.js').Codepage} Codepage */
+/** @typedef {import('../generated/codepage.js').Codepage} Codepage */
 /**
  * @typedef {Object} CodepageEncoding
  * @property {string} name

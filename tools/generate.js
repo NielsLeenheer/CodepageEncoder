@@ -210,7 +210,7 @@ function generateTypes() {
     output += codepages.map(c => `\t| '${c}'`).join('\n');
     output += ';\n';
 
-    fs.writeFileSync('src/codepage.ts', output, 'utf8');
+    fs.writeFileSync('generated/codepage.ts', output, 'utf8');
 }
 
 
